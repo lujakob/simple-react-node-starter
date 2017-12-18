@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import BeerChart from './BeerChart'
 // https://www.opengov-muenchen.de/tl/dataset/oktoberfest/resource/56a0c3c8-c2ea-4b42-bbd2-21cb72d80803
 
 const API = 'http://localhost:3000'
@@ -18,7 +19,9 @@ class BeerPage extends Component {
   render () {
     return (
       <div className="beer-page">
-        <h1>Beer page</h1>
+        <h1>Beer consumption Oktoberfest</h1>
+        <BeerChart data={this.state.beers}/>
+
         <table>
           <thead>
             <tr>

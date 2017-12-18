@@ -29,7 +29,7 @@ db.once('open', () => {
   app.get('/beers', (req, res) => {
     BEER
       .find({}, 'year visitors consumption')
-      .sort([['year', -1]])
+      .sort([['year', 1]])
       .exec((err, beers) => {
         if (err) {
           console.log(err);
