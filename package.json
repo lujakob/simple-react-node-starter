@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --progress --colors --hot --config ./webpack.client.config.js",
+    "start-client": "webpack-dev-server --progress --colors --hot --config ./webpack.client.config.js",
+    "start-backend": "concurrently -c blue,cyan \"webpack --watch --config ./webpack.backend.config.js \" \"sleep 3 && nodemon backend/dist/bundle.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Lukas Jakob",
@@ -33,6 +34,9 @@
     "webpack-dev-server": "^2.9.7"
   },
   "dependencies": {
+    "concurrently": "^3.5.1",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   }

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import '../styles/index.scss'
+import List from './List'
 
 const title = 'My Minimal React Webpack Babel Setup';
 
@@ -8,6 +9,7 @@ export default class App extends Component {
     return (
       <div className="page-wrapper">
         <h1>{title}</h1>
+        <List/>
       </div>
     )
   }
