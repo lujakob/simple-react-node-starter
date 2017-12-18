@@ -19,7 +19,9 @@ export default () => {
           <li>
             <Link to="/list">List</Link>
           </li>
-
+          <li>
+            <Link to="/beer">Beer</Link>
+          </li>
         </nav>
       </Navbar.Collapse>
     </Navbar>

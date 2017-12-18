@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import '../styles/index.scss'
 
 const API = 'http://localhost:3000'
 const DEFAULT_QUERY = '/list'
