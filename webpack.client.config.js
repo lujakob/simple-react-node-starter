@@ -11,7 +11,8 @@ module.exports = {
   },
   devServer: {
     contentBase: './client/public',
-    publicPath: '/dist/'
+    publicPath: '/dist/',
+    historyApiFallback: true
   },
   module: {
     loaders: [
