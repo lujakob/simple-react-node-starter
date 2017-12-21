@@ -2,11 +2,11 @@ const path = require('path');
 
 module.exports = {
   devtool: 'source-map',
-  entry: './backend/index.js',
+  entry: './server/index.js',
   target: 'node',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'backend/dist')
+    path: path.resolve(__dirname, 'server/dist')
   },
   module: {
     loaders: [
