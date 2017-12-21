@@ -1,6 +1,6 @@
 const path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin")
-
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -10,8 +10,8 @@ module.exports = {
     path: path.resolve(__dirname, 'client/dist')
   },
   devServer: {
-    contentBase: './client/public',
-    publicPath: '/dist/',
+    contentBase: './client/dist',
+    publicPath: '/',
     historyApiFallback: true
   },
   module: {
@@ -42,5 +42,8 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin('main.css'),
+    new HtmlWebpackPlugin({
+      template: 'client/src/index.html'
+    })
   ]
 };
