@@ -1,6 +1,8 @@
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   devtool: 'source-map',
@@ -16,7 +18,6 @@ module.exports = {
   },
   module: {
     loaders: [
-      // ES6 enabled
       {
         test: /\.js$/,
         loader: 'babel-loader',
@@ -26,17 +27,19 @@ module.exports = {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use: [{
-            loader: "css-loader", options: {
-              sourceMap: true
-            }
-          }, {
-            loader: "sass-loader", options: {
-              sourceMap: true
-            }
-          }],
+          use: [
+            { loader: "css-loader", options: { sourceMap: true}},
+            'resolve-url-loader',
+            { loader: "sass-loader", options: { sourceMap: true}}
+          ],
           publicPath: ""
         })
+      },
+      {
+        test: /\.woff2?$|\.ttf$|\.eot$|\.svg$/,
+        use: [{
+          loader: "file-loader"
+        }]
       }
     ]
   },
@@ -44,6 +47,10 @@ module.exports = {
     new ExtractTextPlugin('main.css'),
     new HtmlWebpackPlugin({
       template: 'client/src/index.html'
-    })
+    }),
+    new StyleExtHtmlWebpackPlugin({
+      minify: true
+    }),
+    new UglifyJsPlugin()
   ]
 };
