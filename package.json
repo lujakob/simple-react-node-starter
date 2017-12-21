@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start-client": "webpack-dev-server --progress --colors --hot --config ./webpack.client.js",
-    "start-server": "concurrently -c blue,cyan \"webpack --watch --config ./webpack.server.js \" \"sleep 3 && nodemon server/dist/bundle.js\"",
+    "dev-client": "webpack-dev-server --progress --colors --hot --config ./webpack.client.dev.js",
+    "build-client": "webpack --progress --colors --config ./webpack.client.prod.js",
+    "dev-server": "concurrently -c blue,cyan \"webpack --watch --config ./webpack.server.js \" \"sleep 3 && nodemon server/dist/bundle.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Lukas Jakob",

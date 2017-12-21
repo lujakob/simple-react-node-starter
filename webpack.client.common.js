@@ -1,8 +1,5 @@
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   devtool: 'source-map',
@@ -10,11 +7,6 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'client/dist')
-  },
-  devServer: {
-    contentBase: './client/dist',
-    publicPath: '/',
-    historyApiFallback: true
   },
   module: {
     loaders: [
@@ -44,13 +36,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('main.css'),
-    new HtmlWebpackPlugin({
-      template: 'client/src/index.html'
-    }),
-    new StyleExtHtmlWebpackPlugin({
-      minify: true
-    }),
-    new UglifyJsPlugin()
+    new ExtractTextPlugin('main.css')
   ]
 };
